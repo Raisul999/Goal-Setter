@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_URL = '/api/goals/'
+const API_URL = process.env.NODE_ENV=='production'?process.env.REACT_APP_API_URL+'/api/goals/': '/api/goals/'
+
+
+// console.log("goals", API_URL)
 
 const createGoal = async (goalData, token) => {
     console.log('Creat', goalData)
@@ -14,7 +17,7 @@ const createGoal = async (goalData, token) => {
 }
 
 const getGoals = async (token) => {
-    console.log('call get goals')
+    // console.log('call get goals')
     const config = {
         headers: {
             Authorization: `Bearer ${token}`

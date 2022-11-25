@@ -10,7 +10,7 @@ function Header() {
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.auth)
 
-  console.log('user',user)
+  // console.log('user',user)
 
   const onLogout = () => {
     dispatch(logout())

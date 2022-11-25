@@ -32,7 +32,8 @@ function Dashboard() {
     return <Spinner />
   }
 
-  console.log(goals)
+  // console.log(goals)
+  // console.log(process.env.REACT_APP_API_URL+'/api/goals')
   return (
     <>
       <section className="heading">
