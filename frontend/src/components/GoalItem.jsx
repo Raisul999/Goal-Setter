@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { deleteGoal, updateGoal } from '../features/goals/goalSlice';
-import {useNavigate} from 'react-router-dom';
+
 function GoalItem({ goal }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const [text, setText] = useState(goal.text)
   const [update, setUpdate] = useState(false)
 
-  const handleUpdate=()=>{
+  const handleUpdate = () => {
     window.location.reload();
   }
   return (
@@ -29,10 +29,10 @@ function GoalItem({ goal }) {
         </div>
 
         <div className="form-group">
-          <button style={{backgroundColor: 'green', color:'white', border:'none', height:'30px', width:'90%'}} onClick={() => { dispatch(updateGoal({id:goal._id, text:text})); setUpdate(false); handleUpdate() }}>
+          <button className='btn-update' onClick={() => { dispatch(updateGoal({ id: goal._id, text: text })); setUpdate(false); handleUpdate() }}>
             Update Goal
           </button>
-          <button style={{backgroundColor: 'red', color:'white', border:'none', height:'30px', width:'90%', marginTop:'10px'}} onClick={() => { setUpdate(false) }}>
+          <button className='btn-cancel' onClick={() => { setUpdate(false) }}>
             Cancel
           </button>
         </div>
@@ -40,7 +40,11 @@ function GoalItem({ goal }) {
 
       </section>}
 
-      {!update&&<button onClick={() => setUpdate(true)}>Update</button>}
+      {!update && <div className='update-btn'>
+        <button type='button' className='btn btn-primary' onClick={() => setUpdate(true)}>Update</button>
+      </div>
+
+      }
       <button className="close" onClick={() => dispatch(deleteGoal(goal._id))}>X</button>
     </div>
   )

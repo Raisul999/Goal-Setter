@@ -95,8 +95,15 @@ h3 {
 .goal {
   background-color: #f4f4f4;
   margin: 10px 0;
-  padding: 20px 0 10px;
+  padding: 20px;
   position: relative;
+}
+
+
+.update-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .goal .close {
@@ -160,12 +167,34 @@ h3 {
   color: #000;
 }
 
-.btn-block {
+.btn-block, .btn-update, .btn-cancel{
   width: 100%;
   margin-bottom: 20px;
 }
 
-.btn:hover {
+.btn-update{
+  background-color: #0275d8;
+  color: white; 
+  border: none; 
+  height: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: medium;
+  border-radius: 5px;
+}
+
+.btn-cancel{
+  background-color: #e62923;
+  color: white; 
+  border: none; 
+  height: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: medium;
+  border-radius: 5px;
+}
+
+.btn:hover, .btn-update:hover, .btn-cancel:hover {
   transform: scale(0.98);
 }
 
@@ -204,6 +233,13 @@ h3 {
   .form {
     width: 90%;
   }
+
+  .goals {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    /* gap: 10px; */
+  }
+  
 
   .heading h1 {
     font-size: 2rem;
