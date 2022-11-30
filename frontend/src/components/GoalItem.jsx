@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { deleteGoal, updateGoal } from '../features/goals/goalSlice';
-
+import {toast} from 'react-toastify';
 function GoalItem({ goal }) {
   const dispatch = useDispatch();
 
@@ -9,6 +9,14 @@ function GoalItem({ goal }) {
   const [update, setUpdate] = useState(false)
 
   const handleUpdate = () => {
+    if (goal.text === text){
+      toast.error('Goal not updated')
+      return
+    } 
+
+    dispatch(updateGoal({ id: goal._id, text: text }));
+
+    setUpdate(false);
     window.location.reload();
   }
   return (
@@ -29,7 +37,7 @@ function GoalItem({ goal }) {
         </div>
 
         <div className="form-group">
-          <button className='btn-update' onClick={() => { dispatch(updateGoal({ id: goal._id, text: text })); setUpdate(false); handleUpdate() }}>
+          <button className='btn-update' onClick={handleUpdate}>
             Update Goal
           </button>
           <button className='btn-cancel' onClick={() => { setUpdate(false) }}>
